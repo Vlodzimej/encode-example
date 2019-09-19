@@ -27,5 +27,14 @@
 */
 
 const encode = str => {
-    
+    let letterCounter = {};
+    const strArray = Array.from(str.toLowerCase());
+    strArray.forEach(x =>
+        letterCounter[x] === undefined
+            ? (letterCounter[x] = 1)
+            : letterCounter[x]++
+    );
+    return strArray.map(x => (letterCounter[x] > 1 ? ')' : '(')).join('');
 };
+
+module.exports = encode;
